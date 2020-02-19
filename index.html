@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+
+	<title>Adriana Rodriguez</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/fonts/fonts.css">
+	<link rel="stylesheet" href="css/fonts/icomoon.css">
+	<script src="js/modernizr-custom.js"></script>
+
+	<link rel="stylesheet" href="css/design.css">
+	
+
+	
+</head>
+<body>
+	<header>
+		<h1>
+			<a href="index.html">
+				<figure>
+					<img src="img/pegasus1.png" alt="logo">
+				</figure>
+			</a>
+			<a href="index.html">
+				Adriana Rodriguez 
+			</a>
+		</h1>
+		<nav id="ioMenu">
+			<figure id="showMenu" class="ioMenuMovil" onclick="displayMenu()"><img src="img/menu.png" alt=""></figure>
+			<div id="card_menu">
+				<figure id="hideMenu" class="ioMenuMovil" onclick="displayMenu()"><img src="img/exit.png" alt=""></figure>
+				<figure id="logo_menu">
+					<img src="img/pegasus1.png" alt="logo">
+				</figure>
+				<ul>
+					<li><a href="#" onclick="navSection('home')">Home</a></li>
+					<li><a href="#" onclick="navSection('aboutme')">Sobre mi</a></li>
+					<li><a href="#" onclick="navSection('skills')">Skills</a></li>
+					<li><a href="#" onclick="navSection('portafolio')">Portafolio</a></li>
+					<li><a href="#" onclick="navSection('blog')">Blog</a></li>
+					<li><a href="#" onclick="displayFormContact('block')">Contacto</a></li>
+				</ul>
+			</div>
+
+			
+		</nav>
+		<div id="prev_section" onclick="displaySection('prev')"><img src="img/icon-08.png" alt=""></div>
+		<div id="next_section" onclick="displaySection('next')"><img src="img/icon-08.png" alt=""></div>
+
+	</header>
+
+	<div id="slider">
+		<section class="slide" id="home" style="display: block;">
+			
+			<div class="mainanimation">
+		
+			</div>
+
+			<div class="mainlogo">
+				<h2>Soy una 
+				<strong>Programadora Web</strong>
+				</h2>
+				<figure>
+					<img src="img/Logo.png" alt="">
+				</figure>
+			</div>
+
+			<div class="buttonspage">
+				<div id="contratame" onclick="displayFormContact('block')">
+					CONTRATAME
+				</div>
+				<a href="docs/curriculum.pdf" target="_blanck">
+					CURRICULUM
+				</a>
+			</div>
+
+		</section>
+		<section class="slide" id="aboutme" style="display: none;"></section>
+		<section class="slide" id="skills" style="display: none;"></section>
+		<section class="slide" id="portafolio" style="display: none;"></section>
+		<section class="slide" id="blog" style="display: none;"></section>
+	</div>
+
+	<div id="contact_form">			
+		<form id="form1" action="contact.php" method="post" name="form1">
+			<div id="close_form" onclick="displayFormContact('none')"></div>
+			<figure id="logo_mensaje"><img src="img/icon-17.png" alt="logo"></figure>
+			<p>Di Hola</p>
+			<input type="text" id="name" name="name" placeholder="Tu nombre"        onfocus="if(this.placeholder='') this.placeholder='Tu nombre'" />
+			<input type="text" id="email" name="email" placeholder="Tu email"       onfocus="if(this.placeholder='') this.placeholder='Tu email'" />
+			<textarea  id="mensaje" name="mensaje" placeholder="Tu mensaje" onfocus="if(this.placeholder='') this.placeholder='Tu mensaje'" ></textarea>
+			<input type="submit" name="Submit" id="button" value="ENVIAR">
+		</form>
+	</div>
+
+	<div id="contact_button" onclick="displayFormContact('block')"></div>
+
+<footer>
+	<div class="rrss">
+		<a href="#" id="twitter"></a>
+		<a href="#" id="instagram"></a>
+		<a href="#" id="facebook"></a>
+		<a href="#" id="linkedin"></a>
+	</div>
+	<p>© 2016 All rights reserved | Privacity Policy</p>
+</footer>
+<script src="js/animation.js"></script>
+<script type="text/javascript">
+	var sections = new Array(5);
+	sections[0]= "home";
+	sections[1]= "aboutme";
+	sections[2]= "skills";
+	sections[3]= "portafolio";
+	sections[4]= "blog";
+
+  alertSize();
+  function alertSize() {
+    var myWidth = 0, myHeight = 0;
+    if( typeof( window.innerWidth ) == 'number' ) {
+      //No-IE
+      myWidth = window.innerWidth;
+      myHeight = window.innerHeight;
+    } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+      //IE 6+
+      myWidth = document.documentElement.clientWidth;
+      myHeight = document.documentElement.clientHeight;
+    } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+      //IE 4 compatible
+      myWidth = document.body.clientWidth;
+      myHeight = document.body.clientHeight;
+    }
+
+    var menu = document.getElementById("card_menu");
+    var display = menu.style.display;
+    //alert(display)
+    if (myWidth < 767){
+      menu.style.display = "none"; //none
+    }
+    else{
+      menu.style.display = "block";
+    }
+
+  } 
+
+  function displayMenu(){
+    var display;
+    var menu = document.getElementById("card_menu");
+    var display = menu.style.display;
+   
+    if (display == "none"){
+      menu.style.display = "block";
+    }
+    else{
+      menu.style.display = "none";
+    }
+  }
+
+  function setColors(i){
+  	var search;
+	var bg_body;
+	var bg_menu;
+	if (sections[i]== "home") {
+		bg_body = "#233D58";
+		bg_menu = "#233D58";
+	}else{
+		bg_body = "#f1f1f1";
+		bg_menu = "#29ABE2";
+	}
+	search = document.getElementById(sections[i]);
+	search.style.background = bg_body;
+	var menu = document.getElementsByTagName("header")[0];
+    menu.style.background = bg_menu; 
+}
+
+
+function displaySection(nav){
+
+	var search;
+	var show;
+
+	for (var i = 0; i < 5; i++) {
+		search = document.getElementById(sections[i]);
+		show = search.style.display;
+
+		if (show == "block"){
+			search.style.display = "none";
+			if (nav == "next") {
+				i++;
+				if (i>4) i=0;
+			}
+			if (nav == "prev") {
+				i--;
+				if (i<0) i=4;
+			}
+			search = document.getElementById(sections[i]);
+			search.style.display = "block";
+			break;
+		}
+	}
+	setColors(i);
+
+}
+
+
+function navSection(nav) {
+	var search;
+	var show;
+	
+
+	for (var i = 0; i <5; i++) {
+		search = document.getElementById(sections[i]);
+		search.style.display = "none";
+		if (sections[i] == nav) {
+			search.style.display = "block";
+			setColors(i);
+		}
+	}
+
+}
+
+
+function displayFormContact(status){
+	var form = document.getElementById("contact_form");
+	form.style.display = status;
+
+
+}
+
+</script>
+</body>
+</html>
